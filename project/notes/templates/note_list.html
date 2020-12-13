@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+{% for note in note_list %}
+
+<br/>
+{{ note.text }}
+{{ note.create_at }}
+
+
+{% endfor %}
+
+{% endif %}
+
+
+{% endblock %}
+
