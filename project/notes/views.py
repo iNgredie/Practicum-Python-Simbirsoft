@@ -1,3 +1,6 @@
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import CreateView, FormView, ListView
 
 from notes.forms import NoteForm, RegistrationForm
@@ -21,15 +24,14 @@ class RegisterFormView(FormView):
 
     def form_valid(self, form):
         form.save()
-        return super(RegisterFormView, self).form_valid(form)
+        email = self.request.POST["email"]
+        password = self.request.POST["password1"]
+        user = authenticate(email=email, password=password)
+        login(self.request, user)
+        return HttpResponseRedirect(reverse("home"))
 
     def form_invalid(self, form):
         return super(RegisterFormView, self).form_invalid(form)
-
-    def get_form_kwargs(self):
-        form_kwargs = super().get_form_kwargs()
-        form_kwargs["request"] = self.request
-        return form_kwargs
 
 
 class NoteFormView(CreateView):

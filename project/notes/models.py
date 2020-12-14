@@ -17,7 +17,7 @@ class User(AbstractUser):
 
 
 class Note(models.Model):
-    """ " Note model"""
+    """Note model"""
 
     text = models.TextField()
     create_at = models.DateTimeField(auto_now_add=True)

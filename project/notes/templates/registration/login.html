@@ -19,10 +19,11 @@
     <form method="POST">
         {% csrf_token %}
 
-
+        {{ form.username.label_tag  }}
         <div class="form-group">
-            <input type="email" class="form-control" , name="email" , placeholder="Email">
+            <input type="email" class="form-control" , name="email" , placeholder="Email address">
         </div>
+        {{ form.password.label_tag  }}
         <div class="form-group">
             <input type="password" class="form-control" , name="password" , placeholder="Password">
         </div>

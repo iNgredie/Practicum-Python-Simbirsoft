@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <br/>
 <h4>New Note</h4>
 
@@ -14,5 +16,6 @@
     <button type="submit" class="save btn btn-primary">Save</button>
 </form>
 
+{% endif%}
 
 {% endblock %}
